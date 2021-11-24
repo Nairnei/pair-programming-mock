@@ -36,6 +36,7 @@ class HomeViewModel : ViewModel() {
             _repository.getStore().enqueue(object : Callback<StoreModel> {
                 override fun onFailure(call: Call<StoreModel>, error: Throwable) {
                     showErrorLoadingStore(error.message.toString())
+                    getDataFromCache()
                 }
 
                 override fun onResponse(
